@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Contact</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="new-contact.html">New Contact</a></li>
+        <li><a href="view-contacts.html">View All Contacts</a></li>
+    </ul>
+</nav>
+
+<section class="form-section">
+    <h1>Add New Employee</h1>
+
+    <form id="employeeForm">
+
+        <input type="text" placeholder="ID Number" required>
+
+        <input type="text" placeholder="First Name" required>
+
+        <input type="text" placeholder="Last Name" required>
+
+        <label>Gender:</label>
+        <div class="gender">
+            <label><input type="radio" name="gender" value="Male" required> Male</label>
+            <label><input type="radio" name="gender" value="Female"> Female</label>
+        </div>
+
+        <input type="tel" placeholder="Phone Number" required>
+
+        <input type="email" placeholder="Email" required>
+
+        <input type="text" placeholder="Address" required>
+
+        <input type="date" required>
+
+        <input type="text" placeholder="Department" required>
+
+        <label>Position:</label>
+        <select required>
+            <option value="">--  --</option>
+            <option></option>
+            <option></option>
+            <option></option>
+            <option></option>
+            <option></option>
+            <option></option>
+        </select>
+
+        <button type="submit">Submit</button>
+
+    </form>
+</section>
+
+</body>
+</html>
