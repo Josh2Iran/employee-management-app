@@ -3,26 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Management System</title>
+    <title>Dashboard - Employee Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-    <div class="profile">
-            <img src="images/profile.jpg" alt="Profile" class="profile-img">
-            <span class="profile-name">Joshua Gachau</span>
-            <span class="profile-position">(Admin)</span><br>
-            <span class="status online">Online</span>
+    <div class="sidebar">
+        <div class="user-panel">
+            <img src="images/profile.jpg" alt="User">
+            <div class="user-info">
+                <p>Joshua Gachau</p>
+                <span class="status"><span class="status-dot"></span> Online</span>
+            </div>
+        </div>
+        <div class="nav-header">Main Navigation</div>
+        <ul class="nav-links">
+            <li class="active"><a href="index.html">Home</a></li>
+            <li><a href="new-contact.html">Add New Contact</a></li>
+            <li><a href="view-contacts.html">View All Contacts</a></li>
+        </ul>
     </div>
 
-<nav class="navbar">
-    <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="new-contact.html">New Contact</a></li>
-        <li><a href="view-contacts.html">View All Contacts</a></li>
-    </ul>
-</nav>
+    <div class="main-content">
+        <div class="header-bar">Employee Management System</div>
+        <div class="content-header">
+            <h1>Dashboard</h1>
+        </div>
+        <div class="dashboard-cards">
+            <div class="card blue">
+                <h3>0</h3>
+                <p>No. of Positions</p>
+                <div class="card-footer">More info →</div>
+            </div>
+            <div class="card green">
+                <h3>0</h3>
+                <p>No. of Contacts</p>
+                <div class="card-footer">More info →</div>
+            </div>
+        </div>
+    </div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const contacts = JSON.parse(localStorage.getItem('employeeContacts')) || [];
+    
+    // Update Contact Count
+    const contactCountEl = document.getElementById('contactCount');
+    if (contactCountEl) {
+        contactCountEl.textContent = contacts.length;
+    }
 
-    <h1 class="title">Employee Management System</h1>
-    <p class="welcome-message">Welcome to the system. Use the navigation links above to add and manage employee contacts.</p>
-
+    // Update Position Count (Unique positions used)
+    const positionCountEl = document.getElementById('positionCount');
+    if (positionCountEl) {
+        const uniquePositions = new Set(
+            contacts
+                .map(c => c.position)
+                .filter(p => p && p !== "" && !p.includes('Select Position'))
+        );
+        positionCountEl.textContent = uniquePositions.size;
+    }
+});
+</script>
 </body>
 </html>
