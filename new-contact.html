@@ -3,82 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Contact</title>
+    <title>Add New Contact</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-
-<nav class="navbar">
-    <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="new-contact.html">New Contact</a></li>
-        <li><a href="view-contacts.html">View All Contacts</a></li>
-    </ul>
-    <div class="profile">
-            <img src="images/profile.jpg" alt="Profile" class="profile-img">
-            <span class="profile-name">Joshua Gachau</span>
-            <span class="profile-position">(Admin)</span><br>
-            <span class="status online">Online</span>
+    <div class="sidebar">
+        <div class="user-panel">
+            <img src="images/profile.jpg" alt="User" referrerPolicy="no-referrer">
+            <div class="user-info">
+                <p>Joshua Gachau</p>
+                <span class="status"><span class="status-dot"></span> Online</span>
+            </div>
+        </div>
+        <div class="nav-header">Main Navigation</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li class="active"><a href="new-contact.html">Add New Contact</a></li>
+            <li><a href="view-contacts.html">View All Contacts</a></li>
+        </ul>
     </div>
-</nav>
 
-<section class="form-section">
-    <h1>Add New Contact</h1>
+    <div class="main-content">
+        <div class="header-bar">Employee Management System</div>
+        <div class="form-container">
+            <div class="form-header">Add New Contact</div>
+            <form id="newContactForm" class="form-body">
+                <div class="form-group">
+                    <label>ID Number</label>
+                    <input type="text" id="idNumber" placeholder="Enter Identification Number" required>
+                </div>
+                <div class="form-group">
+                    <label>Firstname</label>
+                    <input type="text" id="firstName" placeholder="Enter First Name" required>
+                </div>
+                <div class="form-group">
+                    <label>Lastname</label>
+                    <input type="text" id="lastName" placeholder="Enter Last Name" required>
+                </div>
+                <div class="form-group">
+                    <label>Gender</label>
+                    <div style="display: flex; gap: 20px;">
+                        <label style="width: auto; font-weight: normal;"><input type="radio" name="gender" value="Male" checked> Male</label>
+                        <label style="width: auto; font-weight: normal;"><input type="radio" name="gender" value="Female"> Female</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="text" id="phone" placeholder="+2547-- --- ---" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="email" placeholder="Enter Email" required>
+                </div>
+                <div class="form-group">
+                    <label>Address</label>
+                    <input type="text" id="address" placeholder="Enter Address">
+                </div>
+                <div class="form-group">
+                    <label>Date of Birth</label>
+                    <input type="date" id="dob">
+                </div>
+                <div class="form-group">
+                    <label>Position</label>
+                    <select id="position">
+                        <option value="">- Select Position -</option>
+                        <option value="Software Developer">Software Developer</option>
+                        <option value="Web Developer">Web Developer</option>
+                        <option value="Data Analyst">Data Analyst</option>
+                        <option value="Cybersecurity Specialist">Cybersecurity Specialist</option>
+                        <option value="Computer Programmer">Computer Programmer</option>
+                        <option value="Intern">Intern</option>
+                    </select>
+                </div>
+                <div style="text-align: right;">
+                    <button type="submit" class="btn btn-details" style="padding: 10px 20px;">Submit Details</button>
+                </div>
+            </form>
+        </div>
+    </div>
+<script>
+    document.getElementById("employeeForm").addEventListener("submit", function(e) {
+    e.preventDefault();
 
-    <form id="employeeForm">
-        <div>
-            <label for="IDNumber">ID Number:</label>
-            <input type="text" placeholder="Enter Identification Number" required>
-        </div>    
-        <div>
-            <label for="FirstName">First name:</label>
-            <input type="text" placeholder="Enter First Name" required>
-        </div>
-        <div>
-            <label for="LastName">Last name:</label>
-            <input type="text" placeholder="Enter Last Name" required>
-        </div>
-        
-        <div class="gender-section">
-            <label>Gender:</label><br>
-            <input type="radio" name="gender" value="Male">
-            <label for="male">Male</label>
-            <input type="radio" name="gender" value="Female">
-            <label for="Female">Female</label>
-        </div>
-        <div>
-            <label for="Phone">Phone:</label>
-            <input type="tel" placeholder="+2547-- --- ---" required>
-        </div>
-        <div>
-            <label for="Email">Email:</label>
-            <input type="email" placeholder="Enter Email" required>
-        </div>
-        <div>
-            <label for="Address">Address:</label>
-            <input type="text" placeholder="Enter Address" required>
-        </div>
-        <div>
-            <label for="Date of Birth">Date of Birth:</label>
-            <input type="date" required>
-        </div>
+    let contact = {
+        id: document.querySelector("input[placeholder='Enter Identification Number']").value,
+        firstName: document.querySelector("input[placeholder='Enter First Name']").value,
+        lastName: document.querySelector("input[placeholder='Enter Last Name']").value,
+        phone: document.querySelector("input[type='tel']").value,
+        email: document.querySelector("input[type='email']").value
+    };
 
-        <label for="Position">Position:</label>
-        <select id="postion" name="position">
-            <option value="">--Select Position if Official--</option>
-            <option value="Software Developer">Software Developer</option>
-            <option value="Web Developer">Web Developer</option>
-            <option value="Data Analyst">Data Analyst</option>
-            <option value="Cybersecurity Specialist">Cybersecurity Specialist</option>
-            <option value="Computer Programmer">Computer Programmer</option>
-            <option value="Intern">Intern</option>
-        </select>
-        <div>
-            <button type="submit">Submit</button>
-        </div>
+    let contacts = JSON.parse(localStorage.getItem("contacts")) || [];
+    contacts.push(contact);
 
-    </form>
-</section>
+    localStorage.setItem("contacts", JSON.stringify(contacts));
 
+    alert("Contact Saved Successfully!");
+    window.location.href = "view-contacts.html";
+});
+</script>
 </body>
 </html>
