@@ -144,3 +144,76 @@ body {
     font-size: 13px;
     cursor: pointer;
 }
+
+.form-container {
+    background: #fff;
+    margin: 15px;
+    border-top: 3px solid #3c8dbc;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+.form-header {
+    padding: 10px 15px;
+    border-bottom: 1px solid #f4f4f4;
+    font-size: 18px;
+}
+
+.form-body {
+    padding: 20px;
+}
+
+.form-group {
+    display: flex;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.form-group label {
+    width: 150px;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.form-group input, .form-group select {
+    flex: 1;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-radius: 0;
+}
+
+.table-container {
+    background: #fff;
+    margin: 15px;
+    padding: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #f4f4f4;
+    text-align: left;
+    font-size: 14px;
+}
+
+th { background-color: #f9f9f9; }
+
+.btn {
+    padding: 3px 8px;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 12px;
+    cursor: pointer;
+    margin-right: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.btn-details { background-color: #00c0ef; }
+.btn-edit { background-color: #f39c12; }
+.btn-delete { background-color: #dd4b39; }
