@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View All Contacts</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
     <div class="sidebar">
@@ -40,77 +39,6 @@
             </table>
         </div>
     </div>
-<script>
-let contacts = JSON.parse(localStorage.getItem("contacts")) || [];
-
-const table = document.getElementById("contactsTable");
-
-function displayContacts() {
-    table.innerHTML = "";
-
-    if (contacts.length === 0) {
-        table.innerHTML = "<tr><td colspan='5'>No contacts found</td></tr>";
-        return;
-    }
-
-    contacts.forEach((contact, index) => {
-        let row = `
-        <tr>
-            <td>${index + 1}</td>
-            <td>${contact.firstName} ${contact.lastName}</td>
-            <td>${contact.phone}</td>
-            <td>${contact.email}</td>
-            <td>
-                <button class="view" onclick="viewDetails(${index})">View</button>
-                <button class="edit" onclick="editContact(${index})">Edit</button>
-                <button class="delete" onclick="deleteContact(${index})">Delete</button>
-            </td>
-        </tr>
-        `;
-        table.innerHTML += row;
-    });
-}
-
-function viewDetails(index) {
-    let c = contacts[index];
-
-    alert(
-        "Name: " + c.firstName + " " + c.lastName +
-        "\nGender: " + c.gender +
-        "\nPhone: " + c.phone +
-        "\nEmail: " + c.email +
-        "\nAddress: " + c.address +
-        "\nDOB: " + c.dob +
-        "\nPosition: " + c.position
-    );
-}
-
-function deleteContact(index) {
-    if (confirm("Delete this contact?")) {
-        contacts.splice(index, 1);
-        localStorage.setItem("contacts", JSON.stringify(contacts));
-        displayContacts();
-    }
-}
-
-function editContact(index) {
-    let c = contacts[index];
-
-    let newFirst = prompt("Edit First Name:", c.firstName);
-    let newLast = prompt("Edit Last Name:", c.lastName);
-    let newPhone = prompt("Edit Phone:", c.phone);
-
-    if (newFirst && newPhone) {
-        contacts[index].firstName = newFirst;
-        contacts[index].lastName = newLast;
-        contacts[index].phone = newPhone;
-
-        localStorage.setItem("contacts", JSON.stringify(contacts));
-        displayContacts();
-    }
-}
-
-displayContacts();
-</script>
+<script src="main.js"></script>
 </body>
 </html>
