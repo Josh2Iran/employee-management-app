@@ -58,8 +58,9 @@ const table = document.getElementById("contactsTable");
 
 if (table) {
     let contacts = getContacts();
+    const searchInput = document.getElementById("searchInput");
 
-    function displayContacts() {
+    function displayContacts(filteredContacts = contacts) {
         table.innerHTML = `
             <thead>
                 <tr>
@@ -72,12 +73,12 @@ if (table) {
             </thead>
         `;
 
-        if (contacts.length === 0) {
+        if (filteredContacts.length === 0) {
             table.innerHTML += "<tr><td colspan='5'>No contacts found</td></tr>";
             return;
         }
 
-        contacts.forEach((contact, index) => {
+        filteredContacts.forEach((contact, index) => {
             let row = `
             <tr>
                 <td>${index + 1}</td>
@@ -85,9 +86,9 @@ if (table) {
                 <td>${contact.phone}</td>
                 <td>${contact.email}</td>
                 <td>
-                    <button class="btn btn-details" onclick="viewDetails(${index})">Details</button>
-                    <button class="btn btn-edit" onclick="editContact(${index})">Edit</button>
-                    <button class="btn btn-delete" onclick="deleteContact(${index})">Delete</button>
+                    <button class="btn btn-details" onclick="viewDetails('${contact.id}')">Details</button>
+                    <button class="btn btn-edit" onclick="editContact('${contact.id}')">Edit</button>
+                    <button class="btn btn-delete" onclick="deleteContact('${contact.id}')">Delete</button>
                 </td>
             </tr>
             `;
@@ -95,9 +96,25 @@ if (table) {
         });
     }
 
+    // SEARCH FUNCTION
+    if (searchInput) {
+        searchInput.addEventListener("keyup", function () {
+            let searchValue = searchInput.value.toLowerCase();
+
+            let filteredContacts = contacts.filter(contact =>
+                (`${contact.firstName} ${contact.lastName}`).toLowerCase().includes(searchValue) ||
+                contact.phone.toLowerCase().includes(searchValue) ||
+                contact.email.toLowerCase().includes(searchValue) ||
+                contact.position.toLowerCase().includes(searchValue)
+            );
+
+            displayContacts(filteredContacts);
+        });
+    }
+
     // BUTTON FUNCTIONS
-    window.viewDetails = function (index) {
-        let c = contacts[index];
+    window.viewDetails = function (id) {
+        let c = contacts.find(contact => contact.id === id);
 
         alert(
             "ID: " + c.id +
@@ -111,16 +128,17 @@ if (table) {
         );
     };
 
-    window.deleteContact = function (index) {
+    window.deleteContact = function (id) {
         if (confirm("Are you sure you want to delete?")) {
-            contacts.splice(index, 1);
+            contacts = contacts.filter(contact => contact.id !== id);
             saveContacts(contacts);
             displayContacts();
         }
     };
 
-    window.editContact = function (index) {
-        let c = contacts[index];
+    window.editContact = function (id) {
+        let c = contacts.find(contact => contact.id === id);
+        let index = contacts.findIndex(contact => contact.id === id);
 
         let newFirst = prompt("Edit First Name:", c.firstName);
         let newLast = prompt("Edit Last Name:", c.lastName);
