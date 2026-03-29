@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View All Contacts</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,20 +12,32 @@
         <div class="user-panel">
             <img src="images/profile.jpg" alt="user" referrerPolicy="no-referrer">
             <div class="user-info">
-                <p>Joshua Gachau</p>
+                <p>Employee</p>
                 <span class="status"><span class="status-dot"></span> Online</span>
             </div>
         </div>
         <div class="nav-header">Main Navigation</div>
         <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="new-contact.html">Add New Contact</a></li>
-            <li class="active"><a href="view-contacts.html">View All Contacts</a></li>
+            <li>
+                <a href="index.html"><i class="fa fa-house"></i> Home</a>
+            </li>
+            <li>
+                <a href="new-contact.html"><i class="fa fa-user-plus"></i> Add New Contact</a>
+            </li>
+            <li class="active">
+                <a href="view-contacts.html"><i class="fa fa-address-book"></i> View All Contacts</a>
+            </li>
         </ul>
     </div>
 
     <div class="main-content">
         <div class="header-bar">Employee Management System</div>
+
+        <div class="search-bar-container">
+            <i class="fa fa-search search-icon"></i>
+            <input type="text" id="searchInput" placeholder="Search contacts...">
+        </div>
+
         <div class="table-container">
             <table id="contactsTable">
                 <thead>
@@ -36,6 +49,8 @@
                         <th>Tools</th>
                     </tr>
                 </thead>
+                <tbody id="contactsTableBody">
+                </tbody>
             </table>
         </div>
     </div>
