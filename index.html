@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,47 +12,94 @@
         <div class="user-panel">
             <img src="images/profile.jpg" alt="User">
             <div class="user-info">
-                <p>Joshua Gachau</p>
+                <p>Employee</p>
                 <span class="status"><span class="status-dot"></span> Online</span>
             </div>
         </div>
         <div class="nav-header">Main Navigation</div>
         <ul class="nav-links">
-            <li class="active"><a href="index.html">Home</a></li>
-            <li><a href="new-contact.html">Add New Contact</a></li>
-            <li><a href="view-contacts.html">View All Contacts</a></li>
+            <li class="active">
+                <a href="index.html"><i class="fa fa-house"></i> Home</a>
+            </li>
+            <li>
+                <a href="new-contact.html"><i class="fa fa-user-plus"></i> Add New Contact</a>
+            </li>
+            <li>
+                <a href="view-contacts.html"><i class="fa fa-address-book"></i> View All Contacts</a>
+            </li>
         </ul>
     </div>
 <div class="main-content">
-    <div class="header-bar">Employee Management System</div>
+    
+    <div class="dashboard-container">
 
-    <div class="content-header">
-        <h2>Dashboard</h2>
-        <div class="welcome-message">
-            <h3>Welcome to your Employee Management System.</h3>
-            <p>The platform allows you to add, view, edit and manage employee contacts with ease.</p> 
-            <p>Stay organized, keep records up to date and take full control of your employee information in one convenient place.</p>
-        </div>
-    </div>
+        <div class="header-bar">Employee Management System</div>
 
-    <div class="dashboard-cards">
-        <div class="card blue">
-            <h3 id="positionCount">0</h3>
-            <p>No. of Positions</p>
-            <div class="card-footer" onclick="window.location.href='view-contacts.html'">
-                More info →
+        <div class="content-header">
+            <h2>Dashboard</h2>
+            <div class="welcome-message">
+                <h3>Welcome to your Employee Management System.</h3>
+                <p>
+                    Designed to support seamless workforce administration, this platform provides a comprehensive solution for managing employee information.
+                    With easy access to essential tools, you can maintain accurate records, improve operational efficiency and ensure smooth day-to-day management.
+                </p> 
             </div>
         </div>
 
-        <div class="card green">
-            <h3 id="contactCount">0</h3>
-            <p>No. of Contacts</p>
-            <div class="card-footer" onclick="window.location.href='view-contacts.html'">
-                More info →
+        <div class="dashboard-cards">
+            <div class="card blue">
+                <h3 id="positionCount">0</h3>
+                <p>No. of Positions</p>
+                <div class="card-footer" onclick="window.location.href='view-contacts.html'">
+                    More info →
+                </div>
+            </div>
+
+            <div class="card green">
+                <h3 id="contactCount">0</h3>
+                <p>No. of Contacts</p>
+                <div class="card-footer" onclick="window.location.href='view-contacts.html'">
+                    More info →
+                </div>
             </div>
         </div>
+
+        <section class="features-section">
+            <h2>Why Choose This System?</h2>
+            <p class="features-intro">
+                Experience a smarter way to manage your workforce with tools designed for simplicity and efficiency.
+                Everything you need is organized, secure, and easy to access.
+            </p>
+
+            <div class="features-container">
+                <div class="feature-card">
+                    <i class="fas fa-database"></i>
+                    <h3>Centralized Data</h3>
+                    <p>Store and manage all employee records in one secure location.</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Fast Access</h3>
+                    <p>Quickly retrieve and update employee information anytime.</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fas fa-user-check"></i>
+                    <h3>User Friendly</h3>
+                    <p>Simple and intuitive interface for smooth navigation.</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Secure System</h3>
+                    <p>Your data is safely stored and protected at all times.</p>
+                </div>
+            </div>
+        </section>
+
     </div>
-</div>
+</div> 
 <script src="main.js"></script>
 </body>
 </html>
